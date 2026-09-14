@@ -167,7 +167,7 @@ footer{margin-top:30px;color:var(--sub);font-size:.78rem;text-align:center;}
   function fdLabel(v){ if (v >= 1.02) return 'Sobre desempeño'; if (v >= 0.98) return 'En línea'; return 'Bajo desempeño'; }
 
   document.getElementById('periodBadge').textContent = DATA.periodo;
-  document.getElementById('footerNote').textContent = 'Fuentes: 01-REPORTES TOA / Averías Infancia (p20) / Averías Reiteradas (p23) / Primera Cita (p73) / Velocidad Reparaciones (p31) / Backlog Instala / Backlog Repara (p67) · Última actualización: ' + DATA.generatedAt;
+  document.getElementById('footerNote').textContent = 'Diseñado por Xas · Última actualización: ' + DATA.generatedAt;
 
   var totalImporte = 0, totalPersonal = 0, sumFD = 0;
   DATA.agencies.forEach(function(a){ totalImporte += a.ImportePB; totalPersonal += a.Personal; sumFD += a.FactorDesempeno; });
