@@ -34,6 +34,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Se
 .masthead .sub{color:var(--sub);font-size:.9rem;margin-top:2px;}
 .masthead-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
 .period-badge{background:var(--azul-claro);color:var(--azul);font-weight:600;padding:6px 14px;border-radius:999px;font-size:.85rem;}
+.period-select{border:none;cursor:pointer;appearance:none;-webkit-appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23003F86' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:14px;}
+.period-select:focus{outline:2px solid var(--azul);outline-offset:1px;}
 .theme-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 10px;cursor:pointer;font-size:.85rem;}
 .pdf-btn{border:1px solid var(--azul);background:var(--azul);color:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:.85rem;font-weight:600;}
 .pdf-btn:hover{opacity:.9;}
@@ -44,6 +46,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Se
 @media print{
   @page{size:landscape;margin:10mm;}
   .no-print{display:none !important;}
+  .print-only{display:inline-block !important;}
   body{background:#fff;padding-block:0;font-size:.86rem;}
   .card,.stat-tile,.compare-wrap,.method{box-shadow:none;break-inside:avoid;}
   .wrap{max-width:100%;}
@@ -124,7 +127,8 @@ footer{margin-top:30px;color:var(--sub);font-size:.78rem;text-align:center;}
       <div class="sub">Factor Desempeño, Baremo/Importe, Backlog y Quiebre consolidados</div>
     </div>
     <div class="masthead-right">
-      <span class="period-badge" id="periodBadge">—</span>
+      <select class="period-badge period-select no-print" id="periodSelect"></select>
+      <span class="period-badge print-only" id="periodBadgePrint" style="display:none;">—</span>
       <button class="theme-btn no-print" id="themeToggle" type="button">🌓 Tema</button>
       <button class="refresh-btn no-print" id="refreshBtn" type="button">🔄 Actualizar</button>
       <button class="pdf-btn no-print" id="pdfBtn" type="button">📄 Descargar PDF</button>
@@ -156,10 +160,12 @@ footer{margin-top:30px;color:var(--sub);font-size:.78rem;text-align:center;}
   <footer id="footerNote">Cargando…</footer>
 </div>
 
-<script id="rollup-data" type="application/json">{"generatedAt":"14-10-2026 11:55","periodo":"Octubre 2026","agencies":[{"Agencia":"San Antonio","AI_pct":1.02,"RR_pct":0.94,"PCITA_pct":78.1,"VEL_pct":74,"FM_AI":1.1,"FM_RR":1.1,"FM_PCITA":1.1,"FM_VEL":0.9,"FactorDesempeno":1.02,"Personal":6,"Peticiones":0,"BaremoTotal":798.8,"ImportePB":15182347,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":16.2,"BacklogInstala":{"Ratio":3.214},"BacklogRepara":{"Ratio":2.625}},{"Agencia":"Valparaíso","AI_pct":0.27,"RR_pct":1.92,"PCITA_pct":73.06,"VEL_pct":71,"FM_AI":1.1,"FM_RR":1.1,"FM_PCITA":1.0874,"FM_VEL":0.9,"FactorDesempeno":1.0181,"Personal":17,"Peticiones":0,"BaremoTotal":2347.9,"ImportePB":43975185,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":25.3,"BacklogInstala":{"Ratio":2.788},"BacklogRepara":{"Ratio":2.365}},{"Agencia":"Viña del Mar","AI_pct":2.42,"RR_pct":6.25,"PCITA_pct":66.67,"VEL_pct":69.5,"FM_AI":0.9139,"FM_RR":0.9,"FM_PCITA":1.005,"FM_VEL":0.9,"FactorDesempeno":0.9178,"Personal":34,"Peticiones":0,"BaremoTotal":4122.9,"ImportePB":68919895,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":31.94,"BacklogInstala":{"Ratio":2.992},"BacklogRepara":{"Ratio":1.959}}]}</script>
+<script id="rollup-data" type="application/json">{"generatedAt":"14-10-2026 14:24","periodo":"Octubre 2026","agencies":[{"Agencia":"San Antonio","AI_pct":1.02,"RR_pct":0.94,"PCITA_pct":78.51,"VEL_pct":74,"FM_AI":1.1,"FM_RR":1.1,"FM_PCITA":1.1,"FM_VEL":0.9,"FactorDesempeno":1.02,"Personal":6,"Peticiones":0,"BaremoTotal":835.6,"ImportePB":15688449,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":16.2,"BacklogInstala":{"Ratio":3.214},"BacklogRepara":{"Ratio":2.625}},{"Agencia":"Valparaíso","AI_pct":0.27,"RR_pct":1.92,"PCITA_pct":71.53,"VEL_pct":71,"FM_AI":1.1,"FM_RR":1.1,"FM_PCITA":1.0437,"FM_VEL":0.9,"FactorDesempeno":1.0116,"Personal":17,"Peticiones":0,"BaremoTotal":2423.5,"ImportePB":45151025,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":25.3,"BacklogInstala":{"Ratio":2.788},"BacklogRepara":{"Ratio":2.365}},{"Agencia":"Viña del Mar","AI_pct":2.42,"RR_pct":6.25,"PCITA_pct":65.31,"VEL_pct":69.5,"FM_AI":0.9139,"FM_RR":0.9,"FM_PCITA":0.9641,"FM_VEL":0.9,"FactorDesempeno":0.9117,"Personal":34,"Peticiones":0,"BaremoTotal":4266.5,"ImportePB":70466847,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":31.94,"BacklogInstala":{"Ratio":2.992},"BacklogRepara":{"Ratio":1.959}}]}</script>
+<script id="rollup-historico" type="application/json">{"2026-09":{"generatedAt":"22-09-2026","periodo":"Septiembre 2026","agencies":[{"Agencia":"San Antonio","AI_pct":22,"RR_pct":145,"PCITA_pct":7794,"VEL_pct":821,"FM_AI":1,"FM_RR":1,"FM_PCITA":1,"FM_VEL":1,"FactorDesempeno":10808,"Personal":5,"Peticiones":0,"BaremoTotal":0,"ImportePB":14468752,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":1411,"BacklogInstala":{"Ratio":4058},"BacklogRepara":{"Ratio":2359}},{"Agencia":"Valparaíso","AI_pct":71,"RR_pct":194,"PCITA_pct":7165,"VEL_pct":725,"FM_AI":1,"FM_RR":1,"FM_PCITA":1,"FM_VEL":1,"FactorDesempeno":10121,"Personal":17,"Peticiones":0,"BaremoTotal":0,"ImportePB":41151336,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":2368,"BacklogInstala":{"Ratio":4863},"BacklogRepara":{"Ratio":1763}},{"Agencia":"Viña del Mar","AI_pct":345,"RR_pct":837,"PCITA_pct":6608,"VEL_pct":695,"FM_AI":1,"FM_RR":1,"FM_PCITA":1,"FM_VEL":1,"FactorDesempeno":9131,"Personal":34,"Peticiones":0,"BaremoTotal":0,"ImportePB":59844614,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":3131,"BacklogInstala":{"Ratio":4159},"BacklogRepara":{"Ratio":1494}}]},"2026-10":{"generatedAt":"14-10-2026","periodo":"Octubre 2026","agencies":[{"Agencia":"San Antonio","AI_pct":1.02,"RR_pct":0.94,"PCITA_pct":78.51,"VEL_pct":74,"FM_AI":1.1,"FM_RR":1.1,"FM_PCITA":1.1,"FM_VEL":0.9,"FactorDesempeno":1.02,"Personal":6,"Peticiones":0,"BaremoTotal":835.6,"ImportePB":15688449,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":16.2,"BacklogInstala":{"Ratio":3.214},"BacklogRepara":{"Ratio":2.625}},{"Agencia":"Valparaíso","AI_pct":0.27,"RR_pct":1.92,"PCITA_pct":71.53,"VEL_pct":71,"FM_AI":1.1,"FM_RR":1.1,"FM_PCITA":1.0437,"FM_VEL":0.9,"FactorDesempeno":1.0116,"Personal":17,"Peticiones":0,"BaremoTotal":2423.5,"ImportePB":45151025,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":25.3,"BacklogInstala":{"Ratio":2.788},"BacklogRepara":{"Ratio":2.365}},{"Agencia":"Viña del Mar","AI_pct":2.42,"RR_pct":6.25,"PCITA_pct":65.31,"VEL_pct":69.5,"FM_AI":0.9139,"FM_RR":0.9,"FM_PCITA":0.9641,"FM_VEL":0.9,"FactorDesempeno":0.9117,"Personal":34,"Peticiones":0,"BaremoTotal":4266.5,"ImportePB":70466847,"QuiebreComercial_pct":0,"QuiebreTecnico_pct":0,"QuiebreTotal_pct":31.94,"BacklogInstala":{"Ratio":2.992},"BacklogRepara":{"Ratio":1.959}}]}}</script>
 <script>
 (function(){
   var DATA = JSON.parse(document.getElementById('rollup-data').textContent);
+  var HIST = JSON.parse(document.getElementById('rollup-historico').textContent);
 
   function fmt0(n){ return Math.round(n).toLocaleString('es-CL'); }
   function fmt1(n){ return n.toLocaleString('es-CL',{minimumFractionDigits:1,maximumFractionDigits:1}); }
@@ -170,19 +176,6 @@ footer{margin-top:30px;color:var(--sub);font-size:.78rem;text-align:center;}
   function fdColorVar(v){ if (v >= 1.02) return 'var(--good)'; if (v >= 0.98) return 'var(--warn)'; return 'var(--bad)'; }
   function fdLabel(v){ if (v >= 1.02) return 'Sobre desempeño'; if (v >= 0.98) return 'En línea'; return 'Bajo desempeño'; }
 
-  document.getElementById('periodBadge').textContent = DATA.periodo;
-  document.getElementById('footerNote').textContent = 'Diseñado por Xas · Última actualización: ' + DATA.generatedAt;
-
-  var totalImporte = 0, totalPersonal = 0, sumFD = 0;
-  DATA.agencies.forEach(function(a){ totalImporte += a.ImportePB; totalPersonal += a.Personal; sumFD += a.FactorDesempeno; });
-  var avgFD = sumFD / DATA.agencies.length;
-
-  var stripHtml = ''
-    + '<div class="stat-tile"><div class="lbl">Factor Desempeño promedio</div><div class="val" style="color:'+fdColorVar(avgFD)+'">'+fmt2(avgFD)+'</div><div class="note">3 agencias, ponderación 15/30/15/40</div></div>'
-    + '<div class="stat-tile"><div class="lbl">Importe PB total</div><div class="val">'+clp(totalImporte)+'</div><div class="note">Instala CUFH + Repara PxQ</div></div>'
-    + '<div class="stat-tile"><div class="lbl">Personal activo</div><div class="val">'+totalPersonal+'</div><div class="note">técnicos con actividad en el periodo</div></div>';
-  document.getElementById('statStrip').innerHTML = stripHtml;
-
   function compRow(name, pct, fm){
     var frac = Math.max(0, Math.min(1, (fm - 0.85) / (1.15 - 0.85)));
     var color = fm >= 1.0 ? 'var(--good)' : (fm >= 0.95 ? 'var(--warn)' : 'var(--bad)');
@@ -191,39 +184,75 @@ footer{margin-top:30px;color:var(--sub);font-size:.78rem;text-align:center;}
       + '<span class="comp-fm">'+fmt2(fm)+'</span></div>';
   }
 
-  var cardsHtml = '';
-  DATA.agencies.forEach(function(a){
-    var cls = fdClass(a.FactorDesempeno);
-    cardsHtml += '<div class="card">'
-      + '<div class="card-top"><h3>'+a.Agencia+'</h3><span class="chip '+cls+'">'+fdLabel(a.FactorDesempeno)+'</span></div>'
-      + '<div class="fd-value" style="color:'+fdColorVar(a.FactorDesempeno)+'">'+fmt2(a.FactorDesempeno)+'</div>'
-      + '<div class="fd-label">Factor Desempeño</div>'
-      + compRow('AI '+fmt2(a.AI_pct)+'%', a.AI_pct, a.FM_AI)
-      + compRow('RR '+fmt2(a.RR_pct)+'%', a.RR_pct, a.FM_RR)
-      + compRow('PCITA '+fmt2(a.PCITA_pct)+'%', a.PCITA_pct, a.FM_PCITA)
-      + compRow('VEL_1D '+fmt2(a.VEL_pct)+'%', a.VEL_pct, a.FM_VEL)
-      + '<div class="card-stats">'
-      + '<div class="mini-stat"><div class="lbl">Importe PB</div><div class="val">'+clp(a.ImportePB)+'</div></div>'
-      + '<div class="mini-stat"><div class="lbl">Personal</div><div class="val">'+a.Personal+' técnicos</div></div>'
-      + '<div class="mini-stat"><div class="lbl">Backlog Instala</div><div class="val">'+fmt1(a.BacklogInstala.Ratio)+' días</div></div>'
-      + '<div class="mini-stat"><div class="lbl">Backlog Repara</div><div class="val">'+fmt1(a.BacklogRepara.Ratio)+' días</div></div>'
-      + '<div class="mini-stat"><div class="lbl">Quiebre total</div><div class="val">'+fmt2(a.QuiebreTotal_pct)+'%</div></div>'
-      + '<div class="mini-stat"><div class="lbl">Baremo total</div><div class="val">'+fmt1(a.BaremoTotal)+' pts</div></div>'
-      + '</div></div>';
-  });
-  document.getElementById('cards').innerHTML = cardsHtml;
+  function render(data, isHistorico){
+    document.getElementById('periodBadgePrint').textContent = data.periodo;
+    document.getElementById('footerNote').textContent = 'Diseñado por Xas · '
+      + (isHistorico ? ('Cierre histórico de ' + data.periodo + ', datos al ' + data.generatedAt)
+                     : ('Última actualización: ' + data.generatedAt));
 
-  var maxFD = Math.max.apply(null, DATA.agencies.map(function(a){return a.FactorDesempeno;}).concat([1.1]));
-  var compareHtml = '';
-  DATA.agencies.slice().sort(function(x,y){return y.FactorDesempeno - x.FactorDesempeno;}).forEach(function(a){
-    var pct = (a.FactorDesempeno / maxFD) * 100;
-    var markPct = (1.0 / maxFD) * 100;
-    var color = fdColorVar(a.FactorDesempeno);
-    compareHtml += '<div class="compare-row"><span class="compare-name">'+a.Agencia+'</span>'
-      + '<div class="compare-track"><div class="compare-fill" style="width:'+pct+'%;background:'+color+'"></div><div class="compare-mark" style="left:'+markPct+'%"></div></div>'
-      + '<span class="compare-val">'+fmt2(a.FactorDesempeno)+'</span></div>';
+    var totalImporte = 0, totalPersonal = 0, sumFD = 0;
+    data.agencies.forEach(function(a){ totalImporte += a.ImportePB; totalPersonal += a.Personal; sumFD += a.FactorDesempeno; });
+    var avgFD = sumFD / data.agencies.length;
+
+    var stripHtml = ''
+      + '<div class="stat-tile"><div class="lbl">Factor Desempeño promedio</div><div class="val" style="color:'+fdColorVar(avgFD)+'">'+fmt2(avgFD)+'</div><div class="note">3 agencias, ponderación 15/30/15/40</div></div>'
+      + '<div class="stat-tile"><div class="lbl">Importe PB total</div><div class="val">'+clp(totalImporte)+'</div><div class="note">Instala CUFH + Repara PxQ</div></div>'
+      + '<div class="stat-tile"><div class="lbl">Personal activo</div><div class="val">'+totalPersonal+'</div><div class="note">técnicos con actividad en el periodo</div></div>';
+    document.getElementById('statStrip').innerHTML = stripHtml;
+
+    var cardsHtml = '';
+    data.agencies.forEach(function(a){
+      var cls = fdClass(a.FactorDesempeno);
+      cardsHtml += '<div class="card">'
+        + '<div class="card-top"><h3>'+a.Agencia+'</h3><span class="chip '+cls+'">'+fdLabel(a.FactorDesempeno)+'</span></div>'
+        + '<div class="fd-value" style="color:'+fdColorVar(a.FactorDesempeno)+'">'+fmt2(a.FactorDesempeno)+'</div>'
+        + '<div class="fd-label">Factor Desempeño</div>'
+        + compRow('AI '+fmt2(a.AI_pct)+'%', a.AI_pct, a.FM_AI)
+        + compRow('RR '+fmt2(a.RR_pct)+'%', a.RR_pct, a.FM_RR)
+        + compRow('PCITA '+fmt2(a.PCITA_pct)+'%', a.PCITA_pct, a.FM_PCITA)
+        + compRow('VEL_1D '+fmt2(a.VEL_pct)+'%', a.VEL_pct, a.FM_VEL)
+        + '<div class="card-stats">'
+        + '<div class="mini-stat"><div class="lbl">Importe PB</div><div class="val">'+clp(a.ImportePB)+'</div></div>'
+        + '<div class="mini-stat"><div class="lbl">Personal</div><div class="val">'+a.Personal+' técnicos</div></div>'
+        + '<div class="mini-stat"><div class="lbl">Backlog Instala</div><div class="val">'+fmt1(a.BacklogInstala.Ratio)+' días</div></div>'
+        + '<div class="mini-stat"><div class="lbl">Backlog Repara</div><div class="val">'+fmt1(a.BacklogRepara.Ratio)+' días</div></div>'
+        + '<div class="mini-stat"><div class="lbl">Quiebre total</div><div class="val">'+fmt2(a.QuiebreTotal_pct)+'%</div></div>'
+        + '<div class="mini-stat"><div class="lbl">Baremo total</div><div class="val">'+fmt1(a.BaremoTotal)+' pts</div></div>'
+        + '</div></div>';
+    });
+    document.getElementById('cards').innerHTML = cardsHtml;
+
+    var maxFD = Math.max.apply(null, data.agencies.map(function(a){return a.FactorDesempeno;}).concat([1.1]));
+    var compareHtml = '';
+    data.agencies.slice().sort(function(x,y){return y.FactorDesempeno - x.FactorDesempeno;}).forEach(function(a){
+      var pct = (a.FactorDesempeno / maxFD) * 100;
+      var markPct = (1.0 / maxFD) * 100;
+      var color = fdColorVar(a.FactorDesempeno);
+      compareHtml += '<div class="compare-row"><span class="compare-name">'+a.Agencia+'</span>'
+        + '<div class="compare-track"><div class="compare-fill" style="width:'+pct+'%;background:'+color+'"></div><div class="compare-mark" style="left:'+markPct+'%"></div></div>'
+        + '<span class="compare-val">'+fmt2(a.FactorDesempeno)+'</span></div>';
+    });
+    document.getElementById('compare').innerHTML = compareHtml;
+  }
+
+  // ---- Combo de periodo: "Actual" (en vivo) + un mes por cada entrada del historico, mas reciente primero ----
+  var periodSelect = document.getElementById('periodSelect');
+  var mesesOrdenados = Object.keys(HIST).sort().reverse();
+  var optActual = document.createElement('option');
+  optActual.value = 'actual';
+  optActual.textContent = 'Actual — ' + DATA.periodo;
+  periodSelect.appendChild(optActual);
+  mesesOrdenados.forEach(function(mk){
+    var opt = document.createElement('option');
+    opt.value = mk;
+    opt.textContent = HIST[mk].periodo + ' (cierre)';
+    periodSelect.appendChild(opt);
   });
-  document.getElementById('compare').innerHTML = compareHtml;
+  periodSelect.addEventListener('change', function(){
+    if (periodSelect.value === 'actual') { render(DATA, false); }
+    else { render(HIST[periodSelect.value], true); }
+  });
+  render(DATA, false);
 
   var btn = document.getElementById('themeToggle');
   var root = document.documentElement;
@@ -263,6 +292,8 @@ footer{margin-top:30px;color:var(--sub);font-size:.78rem;text-align:center;}
 </script>
 </body>
 </html>
+
+
 
 
 
